@@ -77,7 +77,7 @@ public class HeistCharacter {
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
 			System.out.println(getName() + " was hit" +
-								" for " + damage + " points of damage.");
+								" for " + damage + " damage.");
 			System.out.println(getName() + " now has " +
 								getHitPoints() + " health remaining.");
 			System.out.println();
@@ -94,9 +94,9 @@ public class HeistCharacter {
 	  return (hitPoints > 0);
 	}
     
-	public void attack(HeistCharacter opponent)
+	public void attack(HeistCharacter enemy)
 	{
-		basicAttack.attack(this, opponent);
+		basicAttack.attack(this, enemy);
 
 	}
 
