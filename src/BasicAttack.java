@@ -1,12 +1,14 @@
-
+import java.util.*;
 public class BasicAttack implements Abilities{
-
+	
+	private Random rand = new Random(System.currentTimeMillis());
+	
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {
 		boolean canAttack;
 		int damage;
 
-		canAttack = Math.random() <= character.getChanceToHit();
+		canAttack = rand.nextInt(100)+1 <= character.getChanceToHit();
 
 		if (canAttack){
 			damage = (int)(Math.random() * (character.getDamageMax() - character.getDamageMin() + 1))

@@ -58,7 +58,7 @@ public class HeistCharacter {
 	public void addHitPoints(int hitPoints)
 	{
 		if (hitPoints <=0)
-			System.out.println("Hitpoint amount must be positive.");
+			System.out.println("Health amount must be positive.");
 		else
 		{
 			this.hitPoints += hitPoints;
@@ -70,21 +70,21 @@ public class HeistCharacter {
 	public void subtractHitPoints(int damage)
 	{
 		if (hitPoints <0)
-			System.out.println("Hitpoint amount must be positive.");
+			System.out.println("Health amount must be positive.");
 		else if (hitPoints >0)
 		{
 			this.hitPoints -= damage;
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
 			System.out.println(getName() + " was hit" +
-								" for <" + damage + "> points of damage.");
+								" for " + damage + " points of damage.");
 			System.out.println(getName() + " now has " +
-								getHitPoints() + " hit points remaining.");
+								getHitPoints() + " health remaining.");
 			System.out.println();
 		}
 
 		if (this.hitPoints == 0)
-			System.out.println(name + " has been killed :-(");
+			System.out.println(name + " has been arrested ");
 
 
 	}
