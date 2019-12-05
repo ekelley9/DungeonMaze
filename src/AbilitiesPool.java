@@ -1,9 +1,9 @@
 import java.util.*;
 public class AbilitiesPool {
 
-	private HashMap<String, Abilities> attacks = new HashMap<>();
-	private Abilities attack;
-	public Abilities abililtyFactory(String character)
+	private static HashMap<String, Abilities> attacks = new HashMap<>();
+	private static Abilities attack;
+	public static Abilities abililtyFactory(String character)
 	{
 		if(attacks.containsKey(character)){
 			attack = attacks.get(character);
