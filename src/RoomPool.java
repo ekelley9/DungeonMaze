@@ -6,9 +6,9 @@ public class RoomPool {
 		if(contents.containsKey(objectToAdd)) {
 			contents.get(objectToAdd);
 		}else {
-			if(objectToAdd.equals("LawMan")) {
-				contents.put(objectToAdd, );
-			}
+      if(objectToAdd.equals("DonutSLinger")) {
+			contents.put(objectToAdd, new DonutSlinger(AbilitiesPool.abililtyFactory("DonutSlinger")));
+      }
 		}
 	}
 }

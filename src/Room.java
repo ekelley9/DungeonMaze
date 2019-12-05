@@ -74,13 +74,13 @@ public class Room
 		}
 		
 		return bottom;
-	}
+
 	
 	@Override
 	public String toString() 
 	{
+
 		return this.roomTop() 
 				+ "\n" + this.roomMid(null) 
-				+ "\n" + this.roomBottom();
-	}
+  }
 }
