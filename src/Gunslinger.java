@@ -1,4 +1,5 @@
 
+
 public class Gunslinger extends Robber {
  
 	public Gunslinger(String name, Abilities specialMove) {
