@@ -25,14 +25,6 @@ public class Robber extends HeistCharacter{
 		this.numTurns = numTurns;
 	}
 	
-	public int getPillarCount() {
-		return pillarCount;
-	}
-
-	public void setPillarCount(int pillarCount) {
-		this.pillarCount = pillarCount;
-	}
-
 	public int getTraumaPack() {
 		return traumaPack;
 	}
@@ -49,6 +41,14 @@ public class Robber extends HeistCharacter{
 		this.logicBomb = logicBomb;
 	}
 
+	public void addPillars(){
+		this.pillarCount++;
+	}
+	
+	public boolean maxPillars(){
+		return this.pillarCount == 4;
+	}
+	
 	public boolean dodge() {
 		Random rand = new Random(System.currentTimeMillis());
 		int dodge = rand.nextInt(100)+1;
