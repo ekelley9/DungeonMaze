@@ -74,6 +74,7 @@ public class Room
 		}
 		
 		return bottom;
+	}
 
 	
 	@Override
@@ -82,5 +83,6 @@ public class Room
 
 		return this.roomTop() 
 				+ "\n" + this.roomMid(null) 
-  }
+				+ "\n" + this.roomBottom();
+	}
 }

@@ -1,6 +1,7 @@
 import java.util.*;
 public class AbilitiesPool {
 
+	// We made these static so we could call them in our factories correctly
 	private static HashMap<String, Abilities> attacks = new HashMap<>();
 	private static Abilities attack;
 	public static Abilities abililtyFactory(String character)
