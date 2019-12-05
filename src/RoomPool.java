@@ -8,6 +8,7 @@ public class RoomPool {
 			contents.get(objectToAdd);
 		}else {
 			if(objectToAdd.equals("DonutSLinger")) {
+				contents.put(objectToAdd, new DonutSlinger(AbilitiesPool.abililtyFactory("DonutSlinger")));
 			}
 		}
 	}
