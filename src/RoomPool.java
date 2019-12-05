@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class RoomPool {
 
@@ -7,9 +6,9 @@ public class RoomPool {
 		if(contents.containsKey(objectToAdd)) {
 			contents.get(objectToAdd);
 		}else {
-			if(objectToAdd.equals("DonutSLinger")) {
-				contents.put(objectToAdd, new DonutSlinger(AbilitiesPool.abililtyFactory("DonutSlinger")));
-			}
+      if(objectToAdd.equals("DonutSLinger")) {
+			contents.put(objectToAdd, new DonutSlinger(AbilitiesPool.abililtyFactory("DonutSlinger")));
+      }
 		}
 	}
 }
