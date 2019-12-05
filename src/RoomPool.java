@@ -6,8 +6,8 @@ public class RoomPool {
 		if(contents.containsKey(objectToAdd)) {
 			contents.get(objectToAdd);
 		}else {
-			if(objectToAdd.equals("DonutSLinger")) {
-				contents.put(objectToAdd, new );
+			if(objectToAdd.equals("LawMan")) {
+				contents.put(objectToAdd, );
 			}
 		}
 	}
