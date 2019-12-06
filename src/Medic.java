@@ -2,7 +2,7 @@
 public class Medic extends Robber {
 
 	public Medic(String name, Abilities specialMove) {
-		super(name, 200, 3, 60, 25, 60, 40, specialMove);
+		super(name, 160, 3, 60, 25, 60, 40, specialMove);
 	}
 	
 	public void attack(HeistCharacter enemy) {

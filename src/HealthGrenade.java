@@ -10,7 +10,7 @@ public class HealthGrenade implements Abilities {
 	
 		if (rand.nextInt(100)+1 <= chanceToHit)
 		{
-			int healthPoints = rand.nextInt(21) + 100;
+			int healthPoints = rand.nextInt(21) + 55;
 			character.addHitPoints(healthPoints);
 			System.out.println(character.getName() + " tosses a healing grenade at their feet healing them "
 					+ "for " + healthPoints + " bringing the their HP to " + character.getHitPoints());

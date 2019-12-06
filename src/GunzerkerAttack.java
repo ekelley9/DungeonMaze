@@ -16,7 +16,7 @@ public class GunzerkerAttack implements Abilities {
 		}
 		else
 		{
-			System.out.println(character.getName() + " ");
+			System.out.println(character.getName() + " fires blindly and too erratically failing to hit " + enemy.getName());
 			System.out.println();
 		}
 	}
