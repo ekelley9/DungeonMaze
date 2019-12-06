@@ -15,9 +15,13 @@ public class AbilitiesPool {
 				attack = attacks.put(character, new GunzerkerAttack());
 			}
 			
-			if(character.equals("FemFatale"))
+			if(character.equals("FemmeFatale")) //changed from FemFatale to FemmeFatale
 			{
-				attack = attacks.put(character, new GunzerkerAttack());
+				attack = attacks.put(character, new Distraction());
+			}
+			
+			if(character.contentEquals("Medic")) {
+				attack = attacks.put(character, new HealthGrenade());
 			}
 		}
 		
