@@ -9,7 +9,7 @@ public class LawMan extends HeistCharacter{
 	private Abilities specialMove;
 	
 	
-	public LawMan(String name, int hitPoints, int attackSpeed, double chanceToHit, int chanceToHeal, int damageMin,
+	public LawMan(String name, int hitPoints, int attackSpeed, int chanceToHit, int chanceToHeal, int damageMin,
 			int damageMax, int minHeal, int maxHeal, Abilities specialMove) {
 		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, new BasicAttack());
 		
@@ -45,7 +45,7 @@ public class LawMan extends HeistCharacter{
 		if (canHeal) {
 			healPoints = (int) (rand.nextInt(100)+1 * (maxHeal - minHeal + 1)) + minHeal;
 			addHitPoints(healPoints);
-			System.out.println(getName() + " healed himself for " + healPoints + " points.\n"
+			System.out.println(getName() + " healed themselves for " + healPoints + " points.\n"
 					+ "Total hit points remaining are: " + getHitPoints());
 			System.out.println();
 		}
