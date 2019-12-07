@@ -1,7 +1,6 @@
 
-
 public class HeistCharacter {
-	
+
 	private String name;
 	private int hitPoints;
 	private int attackSpeed;
@@ -9,10 +8,8 @@ public class HeistCharacter {
 	private int damageMin, damageMax;
 	private Abilities basicAttack;
 
-
-	public HeistCharacter(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax, Abilities basicAttack)
-	{
+	public HeistCharacter(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax,
+			Abilities basicAttack) {
 
 		this.name = name;
 		this.hitPoints = hitPoints;
@@ -23,83 +20,64 @@ public class HeistCharacter {
 		this.basicAttack = basicAttack;
 
 	}
-	
-	public String getName()
-	{
+
+	public String getName() {
 		return name;
 	}
-	
-	public int getHitPoints()
-	{
+
+	public int getHitPoints() {
 		return hitPoints;
 	}
-	
-	public int getAttackSpeed()
-	{
+
+	public int getAttackSpeed() {
 		return attackSpeed;
 	}
-	
-	public int getDamageMin()
-	{
+
+	public int getDamageMin() {
 		return this.damageMin;
 	}
-	
-	public int getDamageMax()
-	{
+
+	public int getDamageMax() {
 		return this.damageMax;
 	}
-	
-	public double getChanceToHit()
-	{
+
+	public double getChanceToHit() {
 		return this.chanceToHit;
 	}
 
-
-
-	public void addHitPoints(int hitPoints)
-	{
-		if (hitPoints <=0)
+	public void addHitPoints(int hitPoints) {
+		if (hitPoints <= 0)
 			System.out.println("Health amount must be positive.");
-		else
-		{
+		else {
 			this.hitPoints += hitPoints;
-			
 
 		}
 	}
-	
-	public void subtractHitPoints(int damage)
-	{
-		if (hitPoints <0)
+
+	public void subtractHitPoints(int damage) {
+		if (hitPoints < 0)
 			System.out.println("Health amount must be positive.");
-		else if (hitPoints >0)
-		{
+		else if (hitPoints > 0) {
 			this.hitPoints -= damage;
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
-			System.out.println(getName() + " was hit" +
-								" for " + damage + " damage.");
-			System.out.println(getName() + " now has " +
-								getHitPoints() + " health remaining.");
+			System.out.println(getName() + " was hit" + " for " + damage + " damage.");
+			System.out.println(getName() + " now has " + getHitPoints() + " health remaining.");
 			System.out.println();
 		}
 
 		if (this.hitPoints == 0)
 			System.out.println(name + " has been arrested ");
 
+	}
 
+	public boolean isAlive() {
+		return (hitPoints > 0);
 	}
-	
-    public boolean isAlive()
-	{
-	  return (hitPoints > 0);
-	}
-    
-	public void attack(HeistCharacter enemy)
-	{
+
+	public void attack(HeistCharacter enemy) {
 		basicAttack.attack(this, enemy);
 
 	}
-
 
 }

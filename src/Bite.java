@@ -9,12 +9,11 @@ public class Bite implements Abilities {
 
 		if (rand.nextInt(100) + 1 <= chanceToHit) {
 			int damage = rand.nextInt(55) + 55;
-			System.out.println(character.getName() + " lunges and bites at " + enemy.getName()
-				+ " dealing" + damage + " damage!");
+			System.out.println(
+					character.getName() + " lunges and bites at " + enemy.getName() + " dealing" + damage + " damage!");
 			enemy.subtractHitPoints(damage);
 		} else {
-			System.out.println(character.getName()
-					+ " lunges and misses his bite.");
+			System.out.println(character.getName() + " lunges and misses his bite.");
 		}
 	}
 

@@ -13,7 +13,8 @@ public class MOAB implements Abilities {
 					+ "'s feet, dealing" + damage + " damage!");
 			enemy.subtractHitPoints(damage);
 		} else {
-			System.out.println(character.getName() + "'s MOAB failed to properly ignite, fizzles out before reaching the destination.");
+			System.out.println(character.getName()
+					+ "'s MOAB failed to properly ignite, fizzles out before reaching the destination.");
 		}
 	}
 

@@ -10,7 +10,7 @@ public class CinnamonTwistARang implements Abilities {
 		if (rand.nextInt(100) + 1 <= chanceToHit) {
 			int damage = rand.nextInt(65) + 35;
 			System.out.println(character.getName() + " throws his Cinnamon Twist-A-Rang at " + enemy.getName()
-				+ " dealing" + damage + " damage!");
+					+ " dealing" + damage + " damage!");
 			enemy.subtractHitPoints(damage);
 		} else {
 			System.out.println(character.getName()

@@ -9,12 +9,11 @@ public class Taser implements Abilities {
 
 		if (rand.nextInt(100) + 1 <= chanceToHit) {
 			int damage = rand.nextInt(101);
-			System.out.println(character.getName() + " closes in and tases " + enemy.getName()
-				+ " dealing" + damage + " damage!");
+			System.out.println(
+					character.getName() + " closes in and tases " + enemy.getName() + " dealing" + damage + " damage!");
 			enemy.subtractHitPoints(damage);
 		} else {
-			System.out.println(character.getName()
-					+ " oversteps and misses their attack.");
+			System.out.println(character.getName() + " oversteps and misses their attack.");
 		}
 	}
 
