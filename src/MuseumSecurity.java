@@ -1,7 +1,7 @@
 
-public class museumSecurity extends LawMan {
+public class MuseumSecurity extends LawMan {
 
-	public museumSecurity(Abilities specialMove) {
+	public MuseumSecurity(Abilities specialMove) {
 		super("Paul",  100, 3, 80, 30, 40, 50, 30, 50, specialMove);
 	}
 	
