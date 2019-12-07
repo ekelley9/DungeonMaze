@@ -14,7 +14,7 @@ public class AbilitiesPool {
 				attack = attacks.put(character, new GunzerkerAttack());
 			}
 
-			if (character.equals("FemmeFatale")) // changed from FemFatale to FemmeFatale
+			if (character.equals("FemmeFatale"))
 			{
 				attack = attacks.put(character, new Distraction());
 			}
@@ -33,6 +33,26 @@ public class AbilitiesPool {
 
 			if (character.contentEquals("BigBoomer")) {
 				attack = attacks.put(character, new Entitlement());
+			}
+			
+			if (character.contentEquals("Archrival")) {
+				attack = attacks.put(character, new ArcOfTheCovenant());
+			}
+			
+			if (character.contentEquals("GuardDog")) {
+				attack = attacks.put(character, new Bite());
+			}
+			
+			if (character.contentEquals("DonutSlinger")) {
+				attack = attacks.put(character, new CinnamonTwistARang());
+			}
+			
+			if (character.contentEquals("Swat")) {
+				attack = attacks.put(character, new FlashLight());
+			}
+			
+			if (character.contentEquals("MuseumSecurity")) {
+				attack = attacks.put(character, new Taser());
 			}
 
 		}
