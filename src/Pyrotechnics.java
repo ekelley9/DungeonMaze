@@ -9,7 +9,7 @@ public class Pyrotechnics implements Abilities {
 		
 		if (rand.nextInt(100)+1 <= chanceToHit)
 		{
-			int damage = rand.nextInt(35) + 65;
+			int damage = rand.nextInt(35) + 45;
 			System.out.println(character.getName() + " lights up fireworks at " + enemy.getName()+ " burning them for " + damage
 								+ " damage!");
 			enemy.subtractHitPoints(damage);

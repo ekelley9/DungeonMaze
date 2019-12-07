@@ -8,7 +8,7 @@ public class MOAB implements Abilities {
 		int chanceToHit = 75;
 
 		if (rand.nextInt(100) + 1 <= chanceToHit) {
-			int damage = rand.nextInt(65) + 100;
+			int damage = rand.nextInt(65) + 65;
 			System.out.println(character.getName() + " ducks behind cover and lobs the MOAB at " + enemy.getName()
 					+ "'s feet, dealing" + damage + " damage!");
 			enemy.subtractHitPoints(damage);

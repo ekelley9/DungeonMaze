@@ -8,13 +8,13 @@ public class DonutSlinger extends LawMan {
     }
 
 	public void attack(HeistCharacter opponent) {
-		System.out.println(getName() + " swings his billy club at " + opponent.getName() + ":");
+		System.out.println(getName() + " swings his maple bar club at " + opponent.getName() + ":");
 		super.attack(opponent);
 
 	}
 	
 	public void heal() {
-		System.out.println(this.getName() + "takes a big bite out of his donut");
+		System.out.println(this.getName() + "takes a big bite out of his donut healing for: ");
 		super.heal();
 	}
 }

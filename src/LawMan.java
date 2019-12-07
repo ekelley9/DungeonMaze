@@ -9,7 +9,7 @@ public class LawMan extends HeistCharacter{
 	private Abilities specialMove;
 	
 	
-	public LawMan(String name, int hitPoints, int attackSpeed, double chanceToHit, int chanceToHeal, int damageMin,
+	public LawMan(String name, int hitPoints, int attackSpeed, int chanceToHit, int chanceToHeal, int damageMin,
 			int damageMax, int minHeal, int maxHeal, Abilities specialMove) {
 		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, new BasicAttack());
 		
