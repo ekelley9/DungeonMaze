@@ -17,6 +17,10 @@ public class Museum {
 		}
 		museum[0][0] = new EntranceRoom();
 		museum[4][4] = new ExitRoom();
+		for(int pillar = 0; pillar < 5; pillar++)
+		{
+			this.museum[rand.nextInt(5)][rand.nextInt(5)].getContents().put("Pillar", 1);
+		}
 	}
 	
 	public void printMuseum() {
@@ -25,6 +29,7 @@ public class Museum {
 			for (int j = 0; j < this.museum.length; j++) {
 				System.out.print( this.museum[i][j].toString() + " ");
 			}
+			System.out.println();
 				
 		}
 		

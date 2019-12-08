@@ -76,6 +76,8 @@ public class Room
 			object = "H";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
 			object = "W";
+		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
+			object = "P";
 		}
 		else {
 			object = "E";
@@ -105,9 +107,10 @@ public class Room
 
 	public String toString() 
 	{
+		String result = this.roomTop() 
+				 +  this.roomMid() 
+				+this.roomBottom();
 
-		return    this.roomTop() 
-				 + this.roomMid() 
-				+ this.roomBottom();
+		return result;   
 	}
 }
