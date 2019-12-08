@@ -9,14 +9,35 @@ public class Room
 	private HashMap<String, Object> roomContents = new HashMap<>();
 	
 	public Room(int northWall, int eastWall, int southWall, int westWall) {
+		Random rand = new Random();
 		this.northWall = northWall;
 		this.eastWall = eastWall;
 		this.southWall = southWall;
 		this.westWall = westWall;
+		if (rand.nextInt(100)  <= 40) {
+			roomContents.put("LawMan", LawManFactory.lawFactory(rand.nextInt(5) + 1));
+		}
+		if (rand.nextInt(100) <= 20) {
+			roomContents.put("Laser Grid", 1);
+		}
+		if (rand.nextInt(100) <= 20) {
+			roomContents.put("Med Kit", 1);
+		}
+		if (rand.nextInt(100) <= 15) {
+			roomContents.put("Map Fragment", 1);
+		}
+		if (rand.nextInt(100)  <= 1) {
+			roomContents.put("Waldo", 1);
+		}
+
 	}
 	
 	public HashMap getContents() {
 		return roomContents;
+	}
+	
+	public void setContents(HashMap contents) {
+		this.roomContents = contents;
 	}
 	
 	public boolean isDoor(int wall) {
@@ -28,14 +49,15 @@ public class Room
 		if(this.isDoor(northWall)) {
 			top = "* - *"; 
 		}else {
-			top = "***";
+			top = "* * *";
 		}
-		return top;
+		return "\n" + top;
 	}
 	
-	public String roomMid(String object) {
+	public String roomMid() {
 		String east = "";
 		String west = "";
+		String object = "";
 		if(this.isDoor(this.westWall)) {
 			west = "| ";
 		}else {
@@ -44,16 +66,19 @@ public class Room
 		
 		if(this.roomContents.size() > 1) {
 			object = "M";
-		}else if(this.roomContents.size() < 1) {
-			object = "E";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("LawMan")) {
 			object = "X";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Laser Grid")) {
 			object = "L";
-		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Vision Potion")) {
+		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Map Fragment")) {
 			object = "V";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Medic Kit")) {
 			object = "H";
+		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
+			object = "W";
+		}
+		else {
+			object = "E";
 		}
 		
 		if(this.isDoor(this.eastWall)) {
@@ -61,28 +86,28 @@ public class Room
 		}else {
 			east= " *";
 		}
-		return west + object + east;
+		return "\n" + west + object + east;
 	}
 	
 	public String roomBottom() {
 		String bottom = "";
 		
 		if(this.isDoor(this.southWall)) {
-			bottom = "*-*";
+			bottom = "* - *";
 		}else {
-			bottom = "***";
+			bottom = "* * *";
 		}
 		
-		return bottom;
+		return "\n" + bottom;
 	}
 
 	
-	@Override
+
 	public String toString() 
 	{
 
-		return this.roomTop() 
-				+ "\n" + this.roomMid(null) 
-				+ "\n" + this.roomBottom();
+		return    this.roomTop() 
+				 + this.roomMid() 
+				+ this.roomBottom();
 	}
 }

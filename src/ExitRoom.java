@@ -7,8 +7,8 @@ public class ExitRoom extends Room{
 	}
 	
 	@Override
-	public String roomMid(String Object){
-		return "| O *";
+	public String roomMid(){
+		return "\n| O *";
 	}
 
 }
