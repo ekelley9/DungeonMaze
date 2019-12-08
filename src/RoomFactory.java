@@ -5,8 +5,7 @@ public class RoomFactory {
 	
 	public static Room roomFactory() {
 		Random rand = new Random(System.currentTimeMillis());
-		theRoom = new Room(rand.nextInt(2)+1, rand.nextInt(2)+1, rand.nextInt(2)+1, rand.nextInt(2)+1);
-		RoomPool.contentFactory(theRoom);
+		theRoom = new Room(rand.nextInt(2), rand.nextInt(2), rand.nextInt(2), rand.nextInt(2));
 		return theRoom;
 	}
 }
