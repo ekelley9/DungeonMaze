@@ -24,9 +24,6 @@ public class Museum {
 		for (int i = 0; i < this.museum.length; i++) {
 			for (int j = 0; j < this.museum.length; j++) {
 				System.out.print( this.museum[i][j].toString() + " ");
-				for (int k = j+1; k < this.museum.length; j++) {
-					System.out.print( this.museum[i][k].toString());
-				}
 			}
 				
 		}
