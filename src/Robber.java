@@ -25,23 +25,11 @@ public class Robber extends HeistCharacter{
 	public void setNumTurns(int numTurns) {
 		this.numTurns = numTurns;
 	}
+	public int getPillarCount() {
+		return this.pillarCount;
+	}
+
 	
-	public int getTraumaPack() {
-		return traumaPack;
-	}
-
-	public void setTraumaPack(int traumaPack) {
-		this.traumaPack = traumaPack;
-	}
-
-	public int getLogicBomb() {
-		return logicBomb;
-	}
-
-	public void setLogicBomb(int logicBomb) {
-		this.logicBomb = logicBomb;
-	}
-
 	public void addPillars(){
 		this.pillarCount++;
 	}

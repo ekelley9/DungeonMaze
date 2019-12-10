@@ -51,13 +51,12 @@ public class Room
 		}else {
 			top = "* * *";
 		}
-		return "\n" + top;
+		return top;
 	}
 	
-	public String roomMid() {
+	public String roomMid(String object) {
 		String east = "";
 		String west = "";
-		String object = "";
 		if(this.isDoor(this.westWall)) {
 			west = "| ";
 		}else {
@@ -76,7 +75,7 @@ public class Room
 			object = "H";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
 			object = "W";
-		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
+		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Pillar")) {
 			object = "P";
 		}
 		else {
@@ -88,7 +87,7 @@ public class Room
 		}else {
 			east= " *";
 		}
-		return "\n" + west + object + east;
+		return west + object + east;
 	}
 	
 	public String roomBottom() {
@@ -100,7 +99,7 @@ public class Room
 			bottom = "* * *";
 		}
 		
-		return "\n" + bottom;
+		return bottom;
 	}
 
 	
@@ -108,7 +107,7 @@ public class Room
 	public String toString() 
 	{
 		String result = this.roomTop() 
-				 +  this.roomMid() 
+				 +  this.roomMid("") 
 				+this.roomBottom();
 
 		return result;   

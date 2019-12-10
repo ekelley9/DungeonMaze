@@ -6,8 +6,8 @@ public class EntranceRoom extends Room{
 	}
 	
 	@Override
-	public String roomMid(){
-		return "\n* I |";
+	public String roomMid(String Object){
+		return "* I |";
 	}
 
 }
