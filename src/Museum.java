@@ -7,6 +7,8 @@ public class Museum {
 	
 	private Room[][] museum = new Room [5][5]; 
 	
+	private Room curRoom = museum[this.playerColumn][this.playerRow];
+	
 	private Random rand = new Random();
 	
 	public Museum(){
@@ -19,6 +21,10 @@ public class Museum {
 		museum[0][0] = new EntranceRoom();
 		museum[4][4] = new ExitRoom();
 		addPillars();
+	}
+	
+	public Room getcurRoom() {
+		return this.curRoom;
 	}
 	
 	public void addPillars() {
@@ -73,7 +79,7 @@ public class Museum {
 	public void enterRoom(Robber robber) {
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Waldo")){
-			System.out.println(robber.getName() + " enters the room to find Waldo standing under spotlight, Waldo snaps his fingers");
+			System.out.println(robber.getName() + " enters the room to find Waldo standing under a spotlight, Waldo snaps his fingers");
 			robber.subtractHitPoints(1000000000);
 		}
 		
@@ -126,7 +132,7 @@ public class Museum {
 
 	}
 	
-	public void advancesNorthSouth(String direction) {
+	public void advanceNorthSouth(String direction) {
 
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 
