@@ -2,13 +2,13 @@
 public class ExitRoom extends Room{
 
 	public ExitRoom() {
-		super(1, 1, 1, 0);
+		super(1, 1, 0, 0);
 		
 	}
 	
 	@Override
-	public String roomMid(){
-		return "\n| O *";
+	public String roomMid(String Object){
+		return "| O *";
 	}
 
 }

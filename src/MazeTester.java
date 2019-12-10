@@ -10,6 +10,6 @@ public class MazeTester {
 		Room v = new Room(rand.nextInt(2), rand.nextInt(2), rand.nextInt(2), rand.nextInt(2));
 		//System.out.println(v.toString());
 		//System.out.println(t.toString());
-		
+	
 	}
 }
