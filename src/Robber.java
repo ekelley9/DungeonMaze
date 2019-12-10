@@ -5,6 +5,8 @@ public class Robber extends HeistCharacter{
 	private double chanceToDodge;
 	private int numTurns;
 	private int pillarCount = 0;
+	private int traumaPack = 0;
+	private int logicBomb =  0;
 	private Abilities specialMove;
 	
 	
