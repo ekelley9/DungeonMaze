@@ -76,13 +76,6 @@ public class Museum {
 		
 	}
 
-	public void advanceEastWest(String direction)
-	{
-		if(direction.equals("West")) {
-			this.playerRow--;
-		}else if(direction.equals("East")) {
-			this.playerRow++;
-
 	public void enterRoom(Robber robber) {
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Waldo")){
