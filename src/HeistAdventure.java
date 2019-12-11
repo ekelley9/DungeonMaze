@@ -5,7 +5,14 @@ public class HeistAdventure {
 	public static void main(String[] args) {
 		Museum java;
 		Robber theRobber;
-
+		
+		List<Originator.Memento> savedStates = new ArrayList<Originator.Memento>(); 
+        Originator originator = new Originator();
+        //to save game state to array
+        //savedStates.add(originator.saveToMemento()); 
+        //to load last state saved
+        //originator.restoreFromMemento(savedStates.get(0));
+        
 	}
 	
 	public void menu() {
@@ -40,4 +47,6 @@ public class HeistAdventure {
 			
 		}
 	}
+	
+	
 }
