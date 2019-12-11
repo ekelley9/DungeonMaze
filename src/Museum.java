@@ -9,7 +9,7 @@ public class Museum {
 	
 	private Room curRoom = museum[this.playerColumn][this.playerRow];
 	
-	private Random rand = new Random();
+	private static Random rand = new Random();
 	
 	public Museum(){
 		for(int i = 0; i < museum.length; i++) {
@@ -30,6 +30,11 @@ public class Museum {
 	public void addPillars() {
 		while(pillars < 5) {
 			Room pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
+			
+			if(pillar instanceof ExitRoom){
+				pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
+			}
+			
 			if(!pillar.getContents().containsKey("Pillar"))
 			{
 				pillar.getContents().put("Pillar", 1);
@@ -77,54 +82,191 @@ public class Museum {
 	}
 
 	public void enterRoom(Robber robber) {
+		Room curRoom = museum[this.playerColumn][this.playerRow];
+		System.out.println(curRoom.toString());
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Waldo")){
+		if(curRoom.isVisited()){
+			System.out.println("Looks like you've already been in this room");
+		}
+		
+		if(curRoom.getContents().containsKey("Waldo")){
 			System.out.println(robber.getName() + " enters the room to find Waldo standing under a spotlight, Waldo snaps his fingers");
-			robber.subtractHitPoints(1000000000);
+			System.out.println(robber.getName() + " slowly dissapeares into the abys \nThe Heist was a failure");
+			System.exit(0);
 
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("LawMan")){
-			museum[this.playerColumn][this.playerRow].getContents().get("LawMan");
-		}
-		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Lazser Grid")){
+		if(curRoom.getContents().containsKey("Laser Grid")){
+			System.out.println(robber.getName() + " has triggerd a laser Grid");
 			robber.subtractHitPoints(20);
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Med Kit")){ 
+		if(curRoom.getContents().containsKey("LawMan")){
+			battle(robber, (LawMan) curRoom.getContents().get("LawMan"));
+
 			
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Map Fragment")){ 
+		if(curRoom.getContents().containsKey("Med Kit")){ 
+			System.out.println(robber.getName() + " found a Med Kit and added it to his inventory");
+			robber.addMedKit();
 			
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Pillar")){ 
+		if(curRoom.getContents().containsKey("Map Fragment")){ 
+			
+		}
+		
+		if(curRoom.getContents().containsKey("Pillar")){ 
+			System.out.println(robber.getName() + " found a pillar and added it to his inventory");
 			robber.addPillars();
 		}
 		
-		if( museum[this.playerColumn][this.playerRow] instanceof ExitRoom)
+		if(curRoom instanceof ExitRoom)
 		{ 
 			if(robber.maxPillars()) {
-				
+				System.out.println("Congratulations you found all the pillars Job well done");
+				System.exit(0);
 			}else{
 				System.out.println("You Dont have all the pillars yet come back when you find them all");
 			}
 		}
-		museum[this.playerRow][this.playerColumn].getContents().clear();
+		
+		if(curRoom.getContents().isEmpty() && !curRoom.isVisited()){
+			System.out.println("This room is empty nothing to find");
+			
+		}
+		
+		if(!curRoom.isVisited()){
+			curRoom.setVisited();
+		}
+		curRoom.getContents().clear();
 		
 	}
 	
+	public static void battle(Robber robber, LawMan theMan)
+	{
+		Scanner kb = new Scanner(System.in);
+		System.out.println(robber.getName() + " battles " +
+							theMan.getName());
 
+		
+		while (robber.isAlive() && theMan.isAlive())
+		{
+		    
+			battleChoices(robber, theMan);
+
+			
+			if (theMan.isAlive())
+			{
+				if(rand.nextInt(100)+1 <= 20)
+				{
+					theMan.SpecialAttack(robber);
+				}
+				theMan.attack(robber);
+			}
+
+
+		}
+
+		if (!theMan.isAlive()) {
+			System.out.println(robber.getName() + " was victorious!");
+			}
+		else if(!robber.isAlive())
+		{
+			System.out.println(robber.getName() + " was defeated");
+		}
+
+	}
+	
+	public static void battleChoices(Robber robber, LawMan theMan) {
+		Scanner kb = new Scanner(System.in);
+		robber.setNumTurns(robber.getAttackSpeed()/theMan.getAttackSpeed());
+
+		if (robber.getNumTurns() == 0)
+			robber.setNumTurns(robber.getNumTurns()+ 1);
+
+		System.out.println("Number of turns this round is: " + robber.getNumTurns());
+		int choice = 0;
+
+
+		do
+		{
+			attackMenu(robber);
+			boolean isNumber = true;
+			
+			do{
+				try
+			    {
+			    	choice = kb.nextInt();
+			    	isNumber = true;
+			    }catch(Exception e)
+			    {
+			    	System.out.println(e+ "Please enter a valid number");
+			    	isNumber = false;
+			    }
+
+			}while(!isNumber);
+		    
+		    switch (choice)
+		    {
+			    case 1: robber.attack(theMan);
+			        break;
+			    case 2: robber.SpecialAttack(theMan);
+			        break;
+			    default:
+			        System.out.println("invalid choice!");
+		    }
+
+			robber.setNumTurns(robber.getNumTurns()-1);
+			if (robber.getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + robber.getNumTurns());
+
+		} while(robber.getNumTurns() > 0);
+	}
+
+	public static void attackMenu(Robber robber)
+	{
+		if(robber instanceof Gunslinger)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Crushing Blow on Opponent");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof FemmeFatale)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Perform a Sneak Attack");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Medic)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Self Heal");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Pyromaniac)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Self Heal");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Demolitionist)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. MOAB");
+		    System.out.print("Choose an option: ");
+		}
+	}
+	
 	
 	public void advanceEastWest(String direction) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 		
-		if (direction.equals("West") && curRoom.isDoor(curRoom.westWall)) {
+		if (direction.equals("West") && curRoom.isDoor(curRoom.getWestWall())) {
 			this.playerRow--;
 			curRoom.roomMid("P");
-		} else if (direction.equals("East") && curRoom.isDoor(curRoom.eastWall)) {
+		} else if (direction.equals("East") && curRoom.isDoor(curRoom.getEastWall())) {
 			this.playerRow++;
 			curRoom.roomMid("P");
 		} else {
@@ -137,11 +279,11 @@ public class Museum {
 
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 
-		if (direction.equals("North") && curRoom.isDoor(curRoom.northWall)) {
-			this.playerRow--;
+		if (direction.equals("North") && curRoom.isDoor(curRoom.getNorthWall())) {
+			this.playerColumn--;
 			curRoom.roomMid("P");
-		} else if (direction.equals("South") && curRoom.isDoor(curRoom.southWall)) {
-			this.playerRow++;
+		} else if (direction.equals("South") && curRoom.isDoor(curRoom.getSouthWall())) {
+			this.playerColumn++;
 			curRoom.roomMid("P");
 		} else {
 			System.out.println("Cannot move this way there is no door");
