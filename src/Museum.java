@@ -77,6 +77,36 @@ public class Museum {
 		}	
 		
 	}
+	
+	public void mapFragment() {
+		/*Room curRoom = museum[this.playerColumn][this.playerRow];
+		
+		while(curRoom.isDoor(curRoom.getEastWall())) {
+			if(curRoom.isDoor(curRoom.getNorthWall()) && curRoom.isDoor(curRoom.getWestWall()))
+			{
+				for (int i = this.playerColumn--; i < 4; i++) {
+					for (int j = 0; j < this.museum.length-2; j++) {
+						System.out.print( this.museum[i][j].roomTop()+" ");
+					}
+					System.out.println();
+					for (int k = this.playerRow--; k < 4; k++) {
+						System.out.print( this.museum[i][k].roomMid("")+" ");
+					}
+					System.out.println();
+					for (int l = this.playerRow-- ; l < 4; l++) {
+						System.out.print( this.museum[i][l].roomBottom()+" ");
+					}
+					System.out.println();
+					
+					}
+			}else if(curRoom.isDoor(curRoom.getEastWall())){
+					
+				}
+		}*/
+		
+		
+		
+	}
 
 	public void enterRoom(Robber robber) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
@@ -111,7 +141,7 @@ public class Museum {
 		}
 		
 		if(curRoom.getContents().containsKey("Map Fragment")){ 
-			
+			mapFragment();
 		}
 		
 		if(curRoom.getContents().containsKey("Pillar")){ 
