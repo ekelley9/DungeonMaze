@@ -33,6 +33,10 @@ public class Robber extends HeistCharacter{
 		return this.medKit;
 	}
 	
+	public void decreaseMedKit() {
+		this.medKit--;
+	}
+	
 	public void addMedKit() {
 		this.medKit++;
 	}

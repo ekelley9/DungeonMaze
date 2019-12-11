@@ -22,10 +22,10 @@ public class Room
 			roomContents.put("Laser Grid", 1);
 		}
 		if (rand.nextInt(100) <= 20) {
-			roomContents.put("Med Kit", 1);
+			roomContents.put("Med Kit", new Item("medKit", "Heals"));
 		}
 		if (rand.nextInt(100) <= 15) {
-			roomContents.put("Map Fragment", 1);
+			roomContents.put("Map Fragment", new Item("mapFragment", "Reveals the map"));
 		}
 		if (rand.nextInt(100)  <= 1) {
 			roomContents.put("Waldo", 1);

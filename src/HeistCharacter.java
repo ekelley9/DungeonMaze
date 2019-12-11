@@ -62,8 +62,9 @@ public class HeistCharacter {
 			System.out.println("Health amount must be positive.");
 		else
 		{
+			System.out.println(this.name + "heals for "+ hitPoints);
 			this.hitPoints += hitPoints;
-			
+			System.out.println(this.getName() + " now has "+ this.hitPoints);
 
 		}
 	}

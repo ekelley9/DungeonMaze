@@ -126,6 +126,15 @@ public class HeistAdventure {
 				museum.enterRoom(theRobber);
 				break;
 			case "M":
+				if (theRobber.getMedKit() > 0) {
+					System.out.println(theRobber.getName() + " used a med kit");
+					theRobber.addHitPoints(50);
+					theRobber.decreaseMedKit();
+					System.out.println(theRobber.getName() + " now has " + theRobber.getMedKit() + "'s left");
+				}else {
+					System.out.println("You don't have any Med Kit's to use");
+				}
+				
 				break;
 			case "Q":
 				break;

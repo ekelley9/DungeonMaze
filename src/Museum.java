@@ -187,28 +187,20 @@ public class Museum {
 			robber.setNumTurns(robber.getNumTurns()+ 1);
 
 		System.out.println("Number of turns this round is: " + robber.getNumTurns());
-		int choice = 0;
 
 
 		do
 		{
 			attackMenu(robber);
-			boolean isNumber = true;
-			
-			do{
-				try
-			    {
-			    	choice = kb.nextInt();
-			    	isNumber = true;
-			    }catch(Exception e)
-			    {
-			    	System.out.println(e+ "Please enter a valid number");
-			    	isNumber = false;
-			    }
+			while(!kb.hasNextInt()) {
+				System.out.print("Please enter a vlaid option: ");
+				System.out.println();
+			    kb.next();
+			}
+			int input = kb.nextInt();
 
-			}while(!isNumber);
 		    
-		    switch (choice)
+		    switch (input)
 		    {
 			    case 1: robber.attack(theMan);
 			        break;
@@ -267,13 +259,12 @@ public class Museum {
 	
 	public void advanceEastWest(String direction) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
-		
+		curRoom.roomMid("P");
 		if (direction.equals("West") && curRoom.isDoor(curRoom.getWestWall())) {
 			this.playerRow--;
-			curRoom.roomMid("P");
+			
 		} else if (direction.equals("East") && curRoom.isDoor(curRoom.getEastWall())) {
 			this.playerRow++;
-			curRoom.roomMid("P");
 		} else {
 			System.out.println("Cannot move this way there is no door");
 		}
@@ -283,13 +274,11 @@ public class Museum {
 	public void advanceNorthSouth(String direction) {
 
 		Room curRoom = museum[this.playerColumn][this.playerRow];
-
+		curRoom.roomMid("P");
 		if (direction.equals("North") && curRoom.isDoor(curRoom.getNorthWall())) {
 			this.playerColumn--;
-			curRoom.roomMid("P");
 		} else if (direction.equals("South") && curRoom.isDoor(curRoom.getSouthWall())) {
 			this.playerColumn++;
-			curRoom.roomMid("P");
 		} else {
 			System.out.println("Cannot move this way there is no door");
 		}

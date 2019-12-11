@@ -17,11 +17,9 @@ public class Item {
 		}
 	}
 	
-	public void useMapFragment(Robber robber, Item item, int currentPos, String museum) {
-		if(item.type.equals("mapFragment")) {
-			
-			System.out.println("You glance at a map fragment to see the rooms around you and then destroy it.");
-		}
+	public void useMapFragment(Robber robber) {
+		System.out.println("You glance at a map fragment to see the rooms around you and then destroy it.");
+		
 	}
 	
 	public void tripLaserGrid(Robber robber, Item item) {
