@@ -9,7 +9,7 @@ public class Museum {
 	
 	private Room curRoom = museum[this.playerColumn][this.playerRow];
 	
-	private Random rand = new Random();
+	private static Random rand = new Random();
 	
 	public Museum(){
 		for(int i = 0; i < museum.length; i++) {
@@ -102,7 +102,9 @@ public class Museum {
 		}
 		
 		if(curRoom.getContents().containsKey("LawMan")){
-			curRoom.getContents().get("LawMan");
+			battle(robber, (LawMan) curRoom.getContents().get("LawMan"));
+
+			
 		}
 		
 		if(curRoom.getContents().containsKey("Med Kit")){ 
@@ -142,7 +144,121 @@ public class Museum {
 		
 	}
 	
+	public static void battle(Robber robber, LawMan theMan)
+	{
+		Scanner kb = new Scanner(System.in);
+		System.out.println(robber.getName() + " battles " +
+							theMan.getName());
 
+		
+		while (robber.isAlive() && theMan.isAlive())
+		{
+		    
+			battleChoices(robber, theMan);
+
+			
+			if (theMan.isAlive())
+			{
+				if(rand.nextInt(100)+1 <= 20)
+				{
+					theMan.SpecialAttack(robber);
+				}
+				theMan.attack(robber);
+			}
+
+
+		}
+
+		if (!theMan.isAlive()) {
+			System.out.println(robber.getName() + " was victorious!");
+			}
+		else if(!robber.isAlive())
+		{
+			System.out.println(robber.getName() + " was defeated");
+		}
+
+	}
+	
+	public static void battleChoices(Robber robber, LawMan theMan) {
+		Scanner kb = new Scanner(System.in);
+		robber.setNumTurns(robber.getAttackSpeed()/theMan.getAttackSpeed());
+
+		if (robber.getNumTurns() == 0)
+			robber.setNumTurns(robber.getNumTurns()+ 1);
+
+		System.out.println("Number of turns this round is: " + robber.getNumTurns());
+		int choice = 0;
+
+
+		do
+		{
+			attackMenu(robber);
+			boolean isNumber = true;
+			
+			do{
+				try
+			    {
+			    	choice = kb.nextInt();
+			    	isNumber = true;
+			    }catch(Exception e)
+			    {
+			    	System.out.println(e+ "Please enter a valid number");
+			    	isNumber = false;
+			    }
+
+			}while(!isNumber);
+		    
+		    switch (choice)
+		    {
+			    case 1: robber.attack(theMan);
+			        break;
+			    case 2: robber.SpecialAttack(theMan);
+			        break;
+			    default:
+			        System.out.println("invalid choice!");
+		    }
+
+			robber.setNumTurns(robber.getNumTurns()-1);
+			if (robber.getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + robber.getNumTurns());
+
+		} while(robber.getNumTurns() > 0);
+	}
+
+	public static void attackMenu(Robber robber)
+	{
+		if(robber instanceof Gunslinger)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Crushing Blow on Opponent");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof FemmeFatale)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Perform a Sneak Attack");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Medic)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Self Heal");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Pyromaniac)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Self Heal");
+		    System.out.print("Choose an option: ");
+		}
+		else if(robber instanceof Demolitionist)
+		{
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. MOAB");
+		    System.out.print("Choose an option: ");
+		}
+	}
+	
 	
 	public void advanceEastWest(String direction) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];

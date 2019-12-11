@@ -58,7 +58,7 @@ public class Robber extends HeistCharacter{
 	public void subtractHitPoints(int damage) {
 		
 		if(dodge()) {
-			System.out.println(this.getName() + "managed to dodge the attack");
+			System.out.println(this.getName() + " managed to dodge the attack");
 		}else {
 			super.subtractHitPoints(damage);
 		}
