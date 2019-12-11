@@ -89,7 +89,7 @@ public class Museum {
 		}
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Lazser Grid")){
-			
+			robber.subtractHitPoints(20);
 		}
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Med Kit")){ 
