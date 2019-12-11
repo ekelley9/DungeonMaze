@@ -55,8 +55,11 @@ public class HeistAdventure {
 		System.out.print("Choose a character: ");
 		System.out.println();
 		int choice = kb.nextInt();
-		System.out.print("Enter the name of your Robber: ");
-		String name = kb.next();
+		String name = "";
+		if(choice <= 5) {
+			System.out.print("Enter the name of your Robber: ");
+			name = kb.next();
+		}
 		
 		return characterCreator(choice, name);
 		
