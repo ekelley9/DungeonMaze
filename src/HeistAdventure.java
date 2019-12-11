@@ -124,6 +124,8 @@ public class HeistAdventure {
 				break;
 			case "M":
 				break;
+			case "Q":
+				break;
 				
 			default:
 				System.out.println(theRobber.getName() + "Stands there looking confused");

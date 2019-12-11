@@ -2,7 +2,7 @@
 public class BigBoomer extends Robber {
 
 	public BigBoomer(String name, Abilities specialMove) {
-		super(name, 1000, 99, 100, 500, 999, 99, specialMove);
+		super(name, 1000, 1, 100, 500, 999, 99, specialMove);
 	}
 
 	public void attack(HeistCharacter enemy) {
