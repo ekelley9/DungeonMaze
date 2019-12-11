@@ -31,7 +31,7 @@ public class Museum {
 		while(pillars < 5) {
 			Room pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
 			
-			if(pillar instanceof ExitRoom){
+			if(pillar instanceof ExitRoom || pillar instanceof EntranceRoom){
 				pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
 			}
 			
@@ -74,10 +74,7 @@ public class Museum {
 			System.out.println();
 			
 				
-		}
-		
-		
-		
+		}	
 		
 	}
 
@@ -120,6 +117,9 @@ public class Museum {
 		if(curRoom.getContents().containsKey("Pillar")){ 
 			System.out.println(robber.getName() + " found a pillar and added it to his inventory");
 			robber.addPillars();
+			if(robber.maxPillars()) {
+				System.out.println(robber.getName() + " found all the pillars now to find the exit");
+			}
 		}
 		
 		if(curRoom instanceof ExitRoom)
@@ -230,31 +230,36 @@ public class Museum {
 		if(robber instanceof Gunslinger)
 		{
 			System.out.println("1. Attack Opponent");
-		    System.out.println("2. Crushing Blow on Opponent");
+		    System.out.println("2. Gunzerker Attaack");
 		    System.out.print("Choose an option: ");
 		}
 		else if(robber instanceof FemmeFatale)
 		{
 			System.out.println("1. Attack Opponent");
-		    System.out.println("2. Perform a Sneak Attack");
+		    System.out.println("2. Perform a Distraction");
 		    System.out.print("Choose an option: ");
 		}
 		else if(robber instanceof Medic)
 		{
 			System.out.println("1. Attack Opponent");
-		    System.out.println("2. Self Heal");
+		    System.out.println("2. Health Grenade");
 		    System.out.print("Choose an option: ");
 		}
 		else if(robber instanceof Pyromaniac)
 		{
 			System.out.println("1. Attack Opponent");
-		    System.out.println("2. Self Heal");
+		    System.out.println("2. Pyrotechnics Attack");
 		    System.out.print("Choose an option: ");
 		}
 		else if(robber instanceof Demolitionist)
 		{
 			System.out.println("1. Attack Opponent");
 		    System.out.println("2. MOAB");
+		    System.out.print("Choose an option: ");
+		}else if(robber instanceof BigBoomer) {
+			
+			System.out.println("1. Attack Opponent");
+		    System.out.println("2. Use your Entitlement");
 		    System.out.print("Choose an option: ");
 		}
 	}

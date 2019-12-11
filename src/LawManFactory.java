@@ -6,15 +6,15 @@ public class LawManFactory {
 	public static LawMan lawFactory(int lawChoice) {
 		
 		if(lawChoice == 1){
-			theLaw = new DonutSlinger(AbilitiesPool.abililtyFactory("Gunslinger"));
+			theLaw = new DonutSlinger(AbilitiesPool.abililtyFactory("DonutSlinger"));
 		}else if(lawChoice == 2) {
-			theLaw = new guardDog(AbilitiesPool.abililtyFactory("Gunslinger"));
+			theLaw = new GuardDog(AbilitiesPool.abililtyFactory("GuardDog"));
 		}else if(lawChoice == 3) {
-			theLaw = new Swat(AbilitiesPool.abililtyFactory("Gunslinger"));
+			theLaw = new Swat(AbilitiesPool.abililtyFactory("Swat"));
 		}else if(lawChoice == 4) {
-			theLaw = new Archrival(AbilitiesPool.abililtyFactory("Gunslinger"));
+			theLaw = new Archrival(AbilitiesPool.abililtyFactory("Archrival"));
 		}else if(lawChoice == 5) {
-			theLaw = new museumSecurity(AbilitiesPool.abililtyFactory("Gunslinger"));
+			theLaw = new MuseumSecurity(AbilitiesPool.abililtyFactory("MuseumSecurity"));
 		}
 		
 		return theLaw;

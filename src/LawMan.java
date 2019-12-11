@@ -16,6 +16,7 @@ public class LawMan extends HeistCharacter{
 		this.chanceToHeal = chanceToHeal;
 		this.maxHeal = maxHeal;
 		this.minHeal = minHeal;
+		this.specialMove = specialMove;
 
 	}
 

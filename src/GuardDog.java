@@ -1,7 +1,7 @@
 
-public class guardDog extends LawMan {
+public class GuardDog extends LawMan {
 
-	public guardDog(Abilities specialMove) {
+	public GuardDog(Abilities specialMove) {
 		super("Max the guard dog",  90, 7, 85, 35, 45, 75, 30, 60, specialMove);
 	}
 	
