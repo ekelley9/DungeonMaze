@@ -93,7 +93,7 @@ public class HeistAdventure {
 		System.out.println("you have entered the musuem. Time to find the pillars");
 		museum.printMuseum();
 		String choice = "";
-		while(true) {
+		while(theRobber.isAlive()) {
 			System.out.println("***********************");
 			System.out.println("N) move North");
 			System.out.println("E) move East");

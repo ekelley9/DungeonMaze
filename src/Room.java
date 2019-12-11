@@ -3,7 +3,8 @@ public class Room
 {
 
 //integers to keep track of n, s, e, w
-	int northWall, eastWall, southWall, westWall;
+	private int northWall, eastWall, southWall, westWall;
+	private boolean visited = false;
 	
 // hashmap to keep track of Objects in the room
 	private HashMap<String, Object> roomContents = new HashMap<>();
@@ -36,8 +37,28 @@ public class Room
 		return roomContents;
 	}
 	
-	public void setContents(HashMap contents) {
-		this.roomContents = contents;
+	public int getNorthWall() {
+		return northWall;
+	}
+
+	public int getEastWall() {
+		return eastWall;
+	}
+
+	public int getSouthWall() {
+		return southWall;
+	}
+	
+	public int getWestWall() {
+		return westWall;
+	}
+	
+	public boolean isVisited() {
+		return this.visited;
+	}
+	
+	public void setVisited() {
+		this.visited = true;
 	}
 	
 	public boolean isDoor(int wall) {
@@ -71,7 +92,7 @@ public class Room
 			object = "L";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Map Fragment")) {
 			object = "V";
-		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Medic Kit")) {
+		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Med Kit")) {
 			object = "H";
 		}else if(this.roomContents.size() == 1 && this.roomContents.containsKey("Waldo")) {
 			object = "W";
@@ -106,9 +127,9 @@ public class Room
 
 	public String toString() 
 	{
-		String result = this.roomTop() 
-				 +  this.roomMid("") 
-				+this.roomBottom();
+		String result = "\n" + this.roomTop() 
+				 +  "\n" + this.roomMid("") 
+				+ "\n" + this.roomBottom();
 
 		return result;   
 	}

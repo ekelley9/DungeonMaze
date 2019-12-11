@@ -30,6 +30,11 @@ public class Museum {
 	public void addPillars() {
 		while(pillars < 5) {
 			Room pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
+			
+			if(pillar instanceof ExitRoom){
+				pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
+			}
+			
 			if(!pillar.getContents().containsKey("Pillar"))
 			{
 				pillar.getContents().put("Pillar", 1);
@@ -77,39 +82,45 @@ public class Museum {
 	}
 
 	public void enterRoom(Robber robber) {
+		Room curRoom = museum[this.playerColumn][this.playerRow];
+		System.out.println(curRoom.toString());
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Waldo")){
+		if(curRoom.isVisited()){
+			System.out.println("Looks like you've already been in this room");
+		}
+		
+		if(curRoom.getContents().containsKey("Waldo")){
 			System.out.println(robber.getName() + " enters the room to find Waldo standing under a spotlight, Waldo snaps his fingers");
-			System.out.println(robber.getName() + " slowly dissapeares into the abyss \nThe Heist was a failure");
+			System.out.println(robber.getName() + " slowly dissapeares into the abys \nThe Heist was a failure");
 			System.exit(0);
 
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Laser Grid")){
+		if(curRoom.getContents().containsKey("Laser Grid")){
 			System.out.println(robber.getName() + " has triggerd a laser Grid");
 			robber.subtractHitPoints(20);
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("LawMan")){
-			museum[this.playerColumn][this.playerRow].getContents().get("LawMan");
+		if(curRoom.getContents().containsKey("LawMan")){
+			curRoom.getContents().get("LawMan");
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Med Kit")){ 
+		if(curRoom.getContents().containsKey("Med Kit")){ 
 			System.out.println(robber.getName() + " found a Med Kit and added it to his inventory");
 			robber.addMedKit();
 			
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Map Fragment")){ 
+		if(curRoom.getContents().containsKey("Map Fragment")){ 
 			
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Pillar")){ 
-			System.out.println("Found a pillar and added it to his inventory");
+		if(curRoom.getContents().containsKey("Pillar")){ 
+			System.out.println(robber.getName() + " found a pillar and added it to his inventory");
 			robber.addPillars();
 		}
 		
-		if( museum[this.playerColumn][this.playerRow] instanceof ExitRoom)
+		if(curRoom instanceof ExitRoom)
 		{ 
 			if(robber.maxPillars()) {
 				System.out.println("Congratulations you found all the pillars Job well done");
@@ -119,10 +130,15 @@ public class Museum {
 			}
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().isEmpty()){
+		if(curRoom.getContents().isEmpty() && !curRoom.isVisited()){
 			System.out.println("This room is empty nothing to find");
 			
 		}
+		
+		if(!curRoom.isVisited()){
+			curRoom.setVisited();
+		}
+		curRoom.getContents().clear();
 		
 	}
 	
@@ -131,10 +147,10 @@ public class Museum {
 	public void advanceEastWest(String direction) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 		
-		if (direction.equals("West") && curRoom.isDoor(curRoom.westWall)) {
+		if (direction.equals("West") && curRoom.isDoor(curRoom.getWestWall())) {
 			this.playerRow--;
 			curRoom.roomMid("P");
-		} else if (direction.equals("East") && curRoom.isDoor(curRoom.eastWall)) {
+		} else if (direction.equals("East") && curRoom.isDoor(curRoom.getEastWall())) {
 			this.playerRow++;
 			curRoom.roomMid("P");
 		} else {
@@ -147,10 +163,10 @@ public class Museum {
 
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 
-		if (direction.equals("North") && curRoom.isDoor(curRoom.northWall)) {
+		if (direction.equals("North") && curRoom.isDoor(curRoom.getNorthWall())) {
 			this.playerColumn--;
 			curRoom.roomMid("P");
-		} else if (direction.equals("South") && curRoom.isDoor(curRoom.southWall)) {
+		} else if (direction.equals("South") && curRoom.isDoor(curRoom.getSouthWall())) {
 			this.playerColumn++;
 			curRoom.roomMid("P");
 		} else {
