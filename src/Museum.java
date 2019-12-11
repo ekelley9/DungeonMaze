@@ -80,19 +80,23 @@ public class Museum {
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Waldo")){
 			System.out.println(robber.getName() + " enters the room to find Waldo standing under a spotlight, Waldo snaps his fingers");
-			robber.subtractHitPoints(1000000000);
+			System.out.println(robber.getName() + " slowly dissapeares into the abyss \nThe Heist was a failure");
+			System.exit(0);
 
+		}
+		
+		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Laser Grid")){
+			System.out.println(robber.getName() + " has triggerd a laser Grid");
+			robber.subtractHitPoints(20);
 		}
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("LawMan")){
 			museum[this.playerColumn][this.playerRow].getContents().get("LawMan");
 		}
 		
-		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Lazser Grid")){
-			robber.subtractHitPoints(20);
-		}
-		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Med Kit")){ 
+			System.out.println(robber.getName() + " found a Med Kit and added it to his inventory");
+			robber.addMedKit();
 			
 		}
 		
@@ -101,18 +105,24 @@ public class Museum {
 		}
 		
 		if(museum[this.playerColumn][this.playerRow].getContents().containsKey("Pillar")){ 
+			System.out.println("Found a pillar and added it to his inventory");
 			robber.addPillars();
 		}
 		
 		if( museum[this.playerColumn][this.playerRow] instanceof ExitRoom)
 		{ 
 			if(robber.maxPillars()) {
-				
+				System.out.println("Congratulations you found all the pillars Job well done");
+				System.exit(0);
 			}else{
 				System.out.println("You Dont have all the pillars yet come back when you find them all");
 			}
 		}
-		museum[this.playerRow][this.playerColumn].getContents().clear();
+		
+		if(museum[this.playerColumn][this.playerRow].getContents().isEmpty()){
+			System.out.println("This room is empty nothing to find");
+			
+		}
 		
 	}
 	
@@ -138,10 +148,10 @@ public class Museum {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
 
 		if (direction.equals("North") && curRoom.isDoor(curRoom.northWall)) {
-			this.playerRow--;
+			this.playerColumn--;
 			curRoom.roomMid("P");
 		} else if (direction.equals("South") && curRoom.isDoor(curRoom.southWall)) {
-			this.playerRow++;
+			this.playerColumn++;
 			curRoom.roomMid("P");
 		} else {
 			System.out.println("Cannot move this way there is no door");

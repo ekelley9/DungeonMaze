@@ -5,7 +5,7 @@ public class Robber extends HeistCharacter{
 	private double chanceToDodge;
 	private int numTurns;
 	private int pillarCount = 0;
-	private int traumaPack = 0;
+	private int medKit = 0;
 	private int logicBomb =  0;
 	private Abilities specialMove;
 	
@@ -29,6 +29,13 @@ public class Robber extends HeistCharacter{
 		return this.pillarCount;
 	}
 
+	public int getMedKit() {
+		return this.medKit;
+	}
+	
+	public void addMedKit() {
+		this.medKit++;
+	}
 	
 	public void addPillars(){
 		this.pillarCount++;
@@ -41,7 +48,7 @@ public class Robber extends HeistCharacter{
 	public boolean dodge() {
 		Random rand = new Random(System.currentTimeMillis());
 		int dodge = rand.nextInt(100)+1;
-		return this.chanceToDodge <= dodge;
+		return dodge <= this.chanceToDodge;
 	}
 	
 	public void SpecialAttack(HeistCharacter enemy) {

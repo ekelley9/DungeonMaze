@@ -19,19 +19,22 @@ public class AbilitiesPool {
 				attack = attacks.put(character, new Distraction());
 			}
 
-			if (character.contentEquals("Medic")) {
+			if (character.equals("Medic")) {
 				attack = attacks.put(character, new HealthGrenade());
 			}
 
-			if (character.contentEquals("Demolitionist")) {
+			if (character.equals("Demolitionist")) {
 				attack = attacks.put(character, new MOAB());
 			}
 
-			if (character.contentEquals("Pyromaniac")) {
+			if (character.equals("Pyromaniac")) {
 				attack = attacks.put(character, new Pyrotechnics());
 			}
 
-			if (character.contentEquals("BigBoomer")) {
+			if (character.equals("BigBoomer")) {
+				attack = attacks.put(character, new Entitlement());
+			}
+			if (character.equals("DonutSlinger")) {
 				attack = attacks.put(character, new Entitlement());
 			}
 
