@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Item {
 	
@@ -23,12 +24,25 @@ public class Item {
 		}
 	}
 	
+	public void tripLaserGrid(Robber robber, Item item) {
+		Random rand = new Random(System.currentTimeMillis());
+		if(item.type.equals("laserGrid")) {
+			int damage = rand.nextInt(25) + 1;
+			robber.subtractHitPoints(damage);
+			System.out.println("You trip a laser grid and get burned, taking " + damage + " damage");
+		}
+	}
+	
 	public Item medKit() {
-        return new Item ("medKit", "Adds 50hp");
+        return new Item ("medKit", "Adds health to the player");
     }
 	
 	public Item mapFragment() {
 		return new Item ("mapFragment", "Shows contents of adjacent rooms");
+	}
+	
+	public Item laserGrid() {
+		return new Item ("laserGrid", "Trap that deals damage to the player");
 	}
 	
 }
