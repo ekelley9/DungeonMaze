@@ -204,6 +204,7 @@ public class HeistAdventure {
 				break;
 			case "Q":
 				saveGame(museum, theRobber);
+				System.exit(0);
 				break;
 				
 			default:

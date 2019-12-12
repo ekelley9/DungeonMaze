@@ -13,14 +13,13 @@ public class Museum implements Serializable{
 	
 	private Room[][] museum = new Room [5][5]; 
 	
-	private Room curRoom = museum[this.playerColumn][this.playerRow];
-	
 	private static Random rand = new Random();
 	
 	public Museum(){
 		for(int i = 0; i < museum.length; i++) {
 			for(int j = 0; j < museum.length; j++) {
 				museum[i][j] = new Room(1, 1, 1, 1);
+				museum[i][j].randomizeContents();
 			}
 		}
 		addBorders();
@@ -29,12 +28,12 @@ public class Museum implements Serializable{
 		addPillars();
 	}
 	
-	public Room getcurRoom() {
-		return this.curRoom;
+	public Room[][] getMuseum(){
+		return this.museum;
 	}
 	
 	public void addPillars() {
-		while(pillars < 5) {
+		for(int i = 0; i < 4; i++) {
 			Room pillar = museum[rand.nextInt(5)][rand.nextInt(5)];
 			
 			if(pillar instanceof ExitRoom || pillar instanceof EntranceRoom){
@@ -84,35 +83,6 @@ public class Museum implements Serializable{
 		
 	}
 	
-	public void mapFragment() {
-		/*Room curRoom = museum[this.playerColumn][this.playerRow];
-		
-		while(curRoom.isDoor(curRoom.getEastWall())) {
-			if(curRoom.isDoor(curRoom.getNorthWall()) && curRoom.isDoor(curRoom.getWestWall()))
-			{
-				for (int i = this.playerColumn--; i < 4; i++) {
-					for (int j = 0; j < this.museum.length-2; j++) {
-						System.out.print( this.museum[i][j].roomTop()+" ");
-					}
-					System.out.println();
-					for (int k = this.playerRow--; k < 4; k++) {
-						System.out.print( this.museum[i][k].roomMid("")+" ");
-					}
-					System.out.println();
-					for (int l = this.playerRow-- ; l < 4; l++) {
-						System.out.print( this.museum[i][l].roomBottom()+" ");
-					}
-					System.out.println();
-					
-					}
-			}else if(curRoom.isDoor(curRoom.getEastWall())){
-					
-				}
-		}*/
-		
-		
-		
-	}
 
 	public void enterRoom(Robber robber) {
 		Room curRoom = museum[this.playerColumn][this.playerRow];
@@ -147,7 +117,6 @@ public class Museum implements Serializable{
 		}
 		
 		if(curRoom.getContents().containsKey("Map Fragment")){ 
-			mapFragment();
 		}
 		
 		if(curRoom.getContents().containsKey("Pillar")){ 
@@ -162,6 +131,7 @@ public class Museum implements Serializable{
 		{ 
 			if(robber.maxPillars()) {
 				System.out.println("Congratulations you found all the pillars Job well done");
+				printMuseum();
 				System.exit(0);
 			}else{
 				System.out.println("You Dont have all the pillars yet come back when you find them all");
