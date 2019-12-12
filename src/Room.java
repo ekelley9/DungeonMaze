@@ -9,31 +9,15 @@ public class Room implements Serializable{
 	//integers to keep track of n, s, e, w
 	private int northWall, eastWall, southWall, westWall;
 	private boolean visited = false;
-	
+	private static Random rand = new Random();
 // hashmap to keep track of Objects in the room
 	private HashMap<String, Object> roomContents = new HashMap<>();
 	
 	public Room(int northWall, int eastWall, int southWall, int westWall) {
-		Random rand = new Random();
 		this.northWall = northWall;
 		this.eastWall = eastWall;
 		this.southWall = southWall;
 		this.westWall = westWall;
-		if (rand.nextInt(100)  <= 40) {
-			roomContents.put("LawMan", LawManFactory.lawFactory(rand.nextInt(5) + 1));
-		}
-		if (rand.nextInt(100) <= 20) {
-			roomContents.put("Laser Grid", 1);
-		}
-		if (rand.nextInt(100) <= 20) {
-			roomContents.put("Med Kit", new Item("medKit", "Heals"));
-		}
-		if (rand.nextInt(100) <= 15) {
-			roomContents.put("Map Fragment", new Item("mapFragment", "Reveals the map"));
-		}
-		if (rand.nextInt(100)  <= 1) {
-			roomContents.put("Waldo", 1);
-		}
 
 	}
 	
@@ -67,6 +51,23 @@ public class Room implements Serializable{
 	
 	public boolean isDoor(int wall) {
 		return wall == 1;
+	}
+	public void randomizeContents() {
+		if (rand.nextInt(100)  <= 40) {
+			roomContents.put("LawMan", LawManFactory.lawFactory(rand.nextInt(5) + 1));
+		}
+		if (rand.nextInt(100) <= 20) {
+			roomContents.put("Laser Grid", 1);
+		}
+		if (rand.nextInt(100) <= 20) {
+			roomContents.put("Med Kit", new Item("medKit", "Heals"));
+		}
+		if (rand.nextInt(100) <= 15) {
+			roomContents.put("Map Fragment", new Item("mapFragment", "Reveals the map"));
+		}
+		if (rand.nextInt(100)  <= 1) {
+			roomContents.put("Waldo", 1);
+		}
 	}
 	
 	public String roomTop() {
