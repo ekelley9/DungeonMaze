@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Taser implements Abilities {
+public class Taser implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4172746139405253853L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

@@ -1,7 +1,13 @@
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class CinnamonTwistARang implements Abilities {
+public class CinnamonTwistARang implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4023458924686149126L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

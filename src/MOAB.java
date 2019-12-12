@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class MOAB implements Abilities {
+public class MOAB implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6048277389484590991L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

@@ -1,5 +1,11 @@
+import java.io.Serializable;
 import java.util.*;
-public class Museum {
+public class Museum implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2999982143697119088L;
+
 	private int pillars = 0;
 	
 	private int playerRow = 0;

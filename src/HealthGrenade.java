@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class HealthGrenade implements Abilities {
+public class HealthGrenade implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -128638398205022761L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Entitlement implements Abilities {
+public class Entitlement implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1271579024495645893L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

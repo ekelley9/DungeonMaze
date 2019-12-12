@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class ArcOfTheCovenant implements Abilities {
+public class ArcOfTheCovenant implements Abilities, Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8440372396291450830L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

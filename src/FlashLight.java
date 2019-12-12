@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class FlashLight implements Abilities {
+public class FlashLight implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7589689128441151529L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

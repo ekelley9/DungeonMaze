@@ -1,6 +1,12 @@
+import java.io.Serializable;
 
-public class Archrival extends LawMan {
+public class Archrival extends LawMan implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7377412715121473956L;
+
 	public Archrival(Abilities specialMove) {
 		super("Indiana Jones your archrival", 500, 5, 75, 65, 35, 65, 80, 500, specialMove);
 	}

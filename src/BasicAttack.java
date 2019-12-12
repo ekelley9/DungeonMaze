@@ -1,7 +1,12 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class BasicAttack implements Abilities {
+public class BasicAttack implements Abilities, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3306046344594884564L;
 	private Random rand = new Random(System.currentTimeMillis());
 
 	@Override

@@ -1,7 +1,12 @@
 
+import java.io.Serializable;
 import java.util.*;
-public class LawMan extends HeistCharacter{
+public class LawMan extends HeistCharacter implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7676343455353331043L;
 	private int numTurns;
 	private int chanceToHeal;
 	private int maxHeal;

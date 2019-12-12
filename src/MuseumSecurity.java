@@ -1,5 +1,11 @@
+import java.io.Serializable;
 
-public class MuseumSecurity extends LawMan {
+public class MuseumSecurity extends LawMan implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5812441185658254879L;
 
 	public MuseumSecurity(Abilities specialMove) {
 		super("Paul",  100, 3, 80, 30, 40, 50, 30, 50, specialMove);

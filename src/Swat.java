@@ -1,5 +1,11 @@
+import java.io.Serializable;
 
-public class Swat extends LawMan{
+public class Swat extends LawMan implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7292238796596819379L;
 
 	public Swat(Abilities specialMove) {
 		super("Chad", 150, 2, 60, 15, 30, 55, 30, 50, specialMove);

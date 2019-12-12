@@ -1,6 +1,12 @@
+import java.io.Serializable;
 
-public class Gunslinger extends Robber {
+public class Gunslinger extends Robber implements Serializable{
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1627712380976819543L;
+
 	public Gunslinger(String name, Abilities specialMove) {
 		super(name, 125, 4, 80, 35, 60, 20, specialMove);		
 	}

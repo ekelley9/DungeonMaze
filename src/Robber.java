@@ -1,7 +1,12 @@
 
+import java.io.Serializable;
 import java.util.*;
-public class Robber extends HeistCharacter{
+public class Robber extends HeistCharacter implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8170282039793280624L;
 	private double chanceToDodge;
 	private int numTurns;
 	private int pillarCount = 0;

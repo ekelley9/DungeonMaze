@@ -1,8 +1,12 @@
+import java.io.Serializable;
 import java.util.*;
-public class Room 
-{
+public class Room implements Serializable{
 
-//integers to keep track of n, s, e, w
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2593466774711894430L;
+	//integers to keep track of n, s, e, w
 	private int northWall, eastWall, southWall, westWall;
 	private boolean visited = false;
 	

@@ -1,8 +1,13 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 public class HeistAdventure {
 	private static Scanner kb = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Museum java;
 		Robber theRobber;
 
@@ -16,8 +21,69 @@ public class HeistAdventure {
 
 	}
 	
+	public static void saveGame(Museum museum, Robber robber) throws Exception {
+		if(museum == null) throw new Exception("The passed in museum object is null");
+		if(robber == null) throw new Exception("The passed in robber object is null");
+		
+		if(saveExists()) {
+			System.out.print("Would you like to overwrite your previous save? Y/N: ");
+			switch(kb.next().toUpperCase()) {
+			case "Y":
+				try {
+					ObjectOutputStream museumOut = new ObjectOutputStream(new FileOutputStream("SaveMuseum.txt"));
+					ObjectOutputStream robberOut = new ObjectOutputStream(new FileOutputStream("SaveRobber.txt"));
+					
+					museumOut.writeObject(museum);
+					robberOut.writeObject(robber);
+					museumOut.close();
+					robberOut.close();
+				}catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			break;
+			case"N":
+				return;
+			default:
+				System.out.println("Please choos a valid option");
+				
+			}
+		}else {
+			try {
+				ObjectOutputStream museumOut = new ObjectOutputStream(new FileOutputStream("SaveMuseum.txt"));
+				ObjectOutputStream robberOut = new ObjectOutputStream(new FileOutputStream("SaveRobber.txt"));
+				
+				museumOut.writeObject(museum);
+				robberOut.writeObject(robber);
+				museumOut.close();
+				robberOut.close();
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+	}
 	
-	public static Museum startGame() {
+	public static void loadGame() throws Exception {
+		
+		ObjectInputStream musuemIn = new ObjectInputStream(new FileInputStream("SaveMuseum.txt"));
+		ObjectInputStream robberIn = new ObjectInputStream(new FileInputStream("SaveRobber.txt"));
+		
+		Museum museum = (Museum) musuemIn.readObject();
+		Robber theRobber = (Robber) robberIn.readObject();
+		
+		theHeist(museum, theRobber);
+	}
+	
+	public static boolean saveExists() {
+		File f = new File("SaveMuseum.txt");
+		if(f.exists())
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public static Museum startGame() throws Exception {
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Welcome to Museum Heist");
 		System.out.println("***********************");
@@ -32,7 +98,7 @@ public class HeistAdventure {
         	case 1:
         		return new Museum();
             case 2:
-                //loadGame();
+                loadGame();
                 break;
             case 3:
                 System.exit(0);
@@ -91,7 +157,7 @@ public class HeistAdventure {
 		}
 	}
 	
-	public static void theHeist(Museum museum, Robber theRobber) {
+	public static void theHeist(Museum museum, Robber theRobber) throws Exception {
 		
 		System.out.println("you have entered the musuem. Time to find the pillars");
 		museum.printMuseum();
@@ -137,6 +203,7 @@ public class HeistAdventure {
 				
 				break;
 			case "Q":
+				saveGame(museum, theRobber);
 				break;
 				
 			default:

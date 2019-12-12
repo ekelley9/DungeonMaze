@@ -1,5 +1,11 @@
+import java.io.Serializable;
 
-public class Distraction implements Abilities{
+public class Distraction implements Abilities, Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7409697262917242099L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

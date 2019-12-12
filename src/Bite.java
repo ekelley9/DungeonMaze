@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Bite implements Abilities {
+public class Bite implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 710592346702783250L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

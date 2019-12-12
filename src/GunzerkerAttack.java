@@ -1,6 +1,12 @@
 
+import java.io.Serializable;
 import java.util.*;
-public class GunzerkerAttack implements Abilities {
+public class GunzerkerAttack implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8145279802196699973L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {

@@ -1,7 +1,11 @@
+import java.io.Serializable;
 
-
-public class HeistCharacter {
+public class HeistCharacter implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3699557472605590839L;
 	private String name;
 	private int hitPoints;
 	private int attackSpeed;

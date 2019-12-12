@@ -1,7 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Item {
+public class Item implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3660593805040474169L;
 	private String type;
 	private String description;
 	

@@ -1,5 +1,11 @@
+import java.io.Serializable;
 
-public class GuardDog extends LawMan {
+public class GuardDog extends LawMan implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3395247408895520306L;
 
 	public GuardDog(Abilities specialMove) {
 		super("Max the guard dog",  90, 7, 85, 35, 45, 75, 30, 60, specialMove);

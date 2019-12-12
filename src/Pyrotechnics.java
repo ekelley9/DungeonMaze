@@ -1,6 +1,12 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Pyrotechnics implements Abilities {
+public class Pyrotechnics implements Abilities, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6814445556127808814L;
 
 	@Override
 	public void attack(HeistCharacter character, HeistCharacter enemy) {
